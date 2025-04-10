@@ -11,13 +11,12 @@ print(response.status_code)
 print(response.json()["authToken"])
 
 authtoken = response.json()["authToken"]
-def post_new_client_kit(kit_body, authtoken):
-    header1 = {
-        "Content-Type": "application/json",
-        "Authorization": f'Bearer {authtoken}' }
+def post_new_client_kit(kit_body, auth_token):
+    headers1 = data.headers.copy()
+    headers1["Authorization"] =  f"Bearer {auth_token}"
     return  requests.post(configuration.URL_SERVICE + configuration.CREATE_KIT_PATH,
                            json= kit_body,
-                           headers=header1)
+                           headers=headers1)
 response = post_new_client_kit(data.kit_body, authtoken)
-print(response.status_code)
+
 

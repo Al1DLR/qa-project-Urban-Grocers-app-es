@@ -1,8 +1,5 @@
 import sender_stand_request
 import data
-import pytest
-
-
 
 def get_new_kit(names):
     current_body = data.kit_body.copy()
@@ -22,23 +19,24 @@ def negative_assert_symbol(namess):
     assert kit_response.json()["message"] ==  "No se han aprobado todos los parámetros requeridos"
 
 def test_create_kit_1_letter_in_camp_name_get_success_response():
-    positive_assert("A")
+    positive_assert(data.kit_name_1_char)
 def test_create_kit_511_letter_in_camp_name_get_success_response():
-    positive_assert("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC")
+    positive_assert(data.kit_name_511_char)
 def test_create_kit_0_letter_in_camp_name_get_negative_response():
-    negative_assert_symbol("")
+    negative_assert_symbol(data.kit_name_0_char)
 def test_create_kit_512_letter_in_camp_name_get_negative_response():
-    negative_assert_symbol("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcD")
+    negative_assert_symbol(data.kit_name_512_char)
 def test_create_kit_special_letter_in_camp_name_get_success_response():
-    positive_assert ("№%@")
+    positive_assert (data.kit_name_special_char)
 def test_create_kit_space_btw_letter_in_camp_name_get_success_response():
-    positive_assert (" A Aaa ")
+    positive_assert (data.kit_space_btw_char)
 def test_create_kit_number_in_camp_name_get_success_response():
-    positive_assert("123")
+    positive_assert(data.kit_dif_number_in_camp_name)
 def test_create_kit_empty_in_camp_name_get_success_response():
-    negative_assert_symbol("")
+    negative_assert_symbol(data.kit_name_empty_in_camp_name)
 def test_create_kit_dif_number_in_camp_name_get_success_response():
-    negative_assert_symbol(123)
+    negative_assert_symbol(data.kit_dif_number_in_camp_name)
+
 
 
 
